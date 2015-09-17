@@ -1,0 +1,41 @@
+<script src='angular.js'></script>
+<script src='cypher.js'></script>
+<link rel='stylesheet' href='bootstrap.css'>
+<link rel='stylesheet' href='style.css'>
+<body ng-app='homepage'>
+	<div ng-controller='cypherController as cypher'>
+		<button ng-class='cypher.buttonClasses[(cypher.tab + 1) % 2]' ng-click='cypher.tab=0'>Ceaser Cypher</button>
+		<button ng-class='cypher.buttonClasses[cypher.tab]' ng-click='cypher.tab=1'>Vigenere Cypher</button>
+		<br></br>
+		<button ng-class='cypher.buttonClasses[cypher.encode]' ng-click='cypher.encode=1'>Encode</button>
+		<button ng-class='cypher.buttonClasses[(cypher.encode + 1) % 2]' ng-click='cypher.encode=0'>Decode</button>
+		<form ng-show='cypher.tab === 0 && cypher.encode' ng-submit='cypher.ceaserEncode()'>
+			Ceaser Cypher Encode
+			<br></br>
+			Enter Clear Text
+			<input type='text' ng-model='cypher.clearText'></input>
+			<br></br>
+			Enter Key
+			<input type='number' ng-model='cypher.ceaserKey'></input>
+			<input type='submit' class='btn btn-success'></input>
+			<br></br>
+			clearText: {{cypher.clearText}}
+			key: {{cypher.ceaserKey}}
+			Encryption: {{cypher.encryptedText}}
+		</form>		
+		<form ng-show='cypher.tab === 0 && !cypher.encode' ng-submit='cypher.ceaserDecode()'>
+			Ceaser Cypher Decode
+			<br></br>
+			Enter Encoded Text
+			<input type='text' ng-model='cypher.encryptedText'></input>
+			<br></br>
+			Enter Key
+			<input type='number' ng-model='cypher.ceaserKey'></input>
+			<input type='submit' class='btn btn-success'></input>
+			<br></br>
+			Encrypted Text: {{cypher.encryptedText}}
+			Key: {{cypher.ceaserKey}}
+			Clear Text: {{cypher.clearText}}
+		</form>		
+	</div>
+ </body>
