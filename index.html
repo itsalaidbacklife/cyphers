@@ -19,9 +19,11 @@
 			<input type='number' ng-model='cypher.ceaserKey'></input>
 			<input type='submit' class='btn btn-success'></input>
 			<br></br>
-			clearText: {{cypher.clearText}}
-			key: {{cypher.ceaserKey}}
-			Encryption: {{cypher.encryptedText}}
+			Clear Text: {{cypher.clearText}}
+			<br></br>
+			Key: {{cypher.ceaserKey}}
+			<br></br>
+			Encryption: {{cypher.encryptedText}}	
 		</form>		
 		<form ng-show='cypher.tab === 0 && !cypher.encode' ng-submit='cypher.ceaserDecode()'>
 			Ceaser Cypher Decode
@@ -34,8 +36,42 @@
 			<input type='submit' class='btn btn-success'></input>
 			<br></br>
 			Encrypted Text: {{cypher.encryptedText}}
+			<br></br>
 			Key: {{cypher.ceaserKey}}
+			<br></br>
+			Decryption: {{cypher.clearText}}
+		</form>	
+		<form ng-show='cypher.tab === 1 && cypher.encode' ng-submit='cypher.vignereEncode()'>
+			Vignere Cypher Encode
+			<br></br>
+			Enter Clear Text
+			<input type='text' ng-model='cypher.clearText'></input>
+			<br></br>
+			Enter Key (Must be word without special characters)
+			<input type='text' ng-model='cypher.vigKey'></input>
+			<input type='submit' class='btn btn-success'></input>
+			<br></br>
 			Clear Text: {{cypher.clearText}}
-		</form>		
+			<br></br>
+			Key: {{cypher.vigKey}}
+			<br></br>
+			Encryption: {{cypher.encryptedText}}			
+		</form>	
+		<form ng-show='cypher.tab === 1 && !cypher.encode' ng-submit='cypher.vignereDecode()'>
+			Vignere Cypher Decode
+			<br></br>
+			Enter Encrypted Text
+			<input type='text' ng-model='cypher.encryptedText'></input>
+			<br></br>
+			Enter Key (Must be word without special characters)
+			<input type='text' ng-model='cypher.vigKey'></input>
+			<input type='submit' class='btn btn-success'></input>
+			<br></br>
+			Encrypted Text: {{cypher.encryptedText}}
+			<br></br>
+			Key: {{cypher.vigKey}}
+			<br></br>
+			Decryption: {{cypher.clearText}}			
+		</form>			
 	</div>
  </body>
